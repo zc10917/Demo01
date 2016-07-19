@@ -17,7 +17,7 @@ import java.util.ArrayList;
 /**
  * Created by zhongcheng on 16/7/18.
  */
-public class ScreenSlidePageFragment extends Fragment{
+public class ScreenSlidePageFragment extends Fragment {
     public ScreenSlidePageFragment() {
     }
 
@@ -34,15 +34,14 @@ public class ScreenSlidePageFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
     Bundle savedInstanceState) {
 
-        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.viewpager_page,container,false);
+        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.viewpager_page, container, false);
         ImageView imageview = (ImageView) root.findViewById(R.id.slidepage_imageview);
 
 
-        
-        Picasso.with(context).load(data.get(count_num)).into(imageview);
-        return  root;
-
-
+        if (data != null) {
+            Picasso.with(context).load(data.get(count_num)).into(imageview);
+        }
+        return root;
 
 
     }

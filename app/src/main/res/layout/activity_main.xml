@@ -1,43 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.example.zhongcheng.demo01.MainActivity">
 
-    <include layout="@layout/top_navigation"/>
 
-    <android.support.v4.view.ViewPager
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/myscrollview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/pager"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="175dp">
-    </android.support.v4.view.ViewPager>
-    <!--<GridView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content">-->
-        <!--<TableRow>-->
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.example.zhongcheng.demo01.MainActivity">
 
-            <!--<TextView android:text="1" android:layout_height="wrap_content" android:layout_width="wrap_content"/>-->
-            <!--<TextView android:text="1" android:layout_height="wrap_content" android:layout_width="wrap_content"/>-->
-            <!--<TextView android:text="1" android:layout_height="wrap_content" android:layout_width="wrap_content"/>-->
+        <include layout="@layout/top_navigation"/>
 
-        <!--</TableRow>-->
+        <android.support.v4.view.ViewPager
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+        </android.support.v4.view.ViewPager>
 
-    <!--</GridView>-->
-    <View
-        android:background="#FF00FFFF"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"/>
+        <include layout="@layout/table_view_item"/>
 
 
-    <ImageView
-        android:id="@+id/imageview01"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        <include layout="@layout/div_blank"/>
 
+        <include layout="@layout/div_grey"/>
+
+        <include layout="@layout/div_blank"/>
+
+        <include layout="@layout/scroll_view_01"/>
+
+        <include layout="@layout/div_blank"/>
+
+        <include layout="@layout/div_grey"/>
+
+        <!--<include layout="@layout/mid_navigation"/>-->
+
+        <com.example.zhongcheng.demo01.ListViewModel.MyListView
+            android:id="@+id/list_view_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <!--<com.example.zhongcheng.demo01.MyLinearLayout-->
+            <!--android:id="@+id/mylinearlayout"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+
+        <!--</com.example.zhongcheng.demo01.MyLinearLayout>-->
+
+
+    </LinearLayout>
 
 
 </LinearLayout>
+
