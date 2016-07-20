@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    android:id="@+id/mid_navi"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:background="@mipmap/title"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:text="全部"/>
+
+    <View
+        android:background="#CCCCCC"
+        android:layout_height="match_parent"
+        android:layout_width="2dp"/>
+
+    <TextView
+        android:background="@mipmap/title"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:text="全部"/>
+
+    <View
+        android:background="#CCCCCC"
+        android:layout_height="match_parent"
+        android:layout_width="2dp"/>
+
+    <TextView
+        android:background="@mipmap/title"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:text="全部"/>
+
+    <View
+        android:background="#CCCCCC"
+        android:layout_height="match_parent"
+        android:layout_width="2dp"/>
+
+    <TextView
+        android:background="@mipmap/title"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:text="全部"/>
+</LinearLayout>

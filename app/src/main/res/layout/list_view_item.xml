@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@mipmap/de1"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/list_view_item_frontimg"/>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/list_view_item_title"/>
+                    <ImageView
+                        android:src="@mipmap/waimai"
+                        android:id="@+id/waimai_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"/>
+                    <ImageView
+                        android:id="@+id/maidian_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"/>
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"/>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <RatingBar
+                        style="?android:ratingBarStyleSmall"
+                        android:rating="3.3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/list_view_item_avgscore"/>
+
+                    <TextView
+                        android:text="ddddd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/list_view_item_avgprice"/>
+                </LinearLayout>
+                <TextView
+                    android:text="ooooooo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/list_view_item_catename"/>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/list_view_item_areaname"
+                android:text="ttttttttt"
+                android:layout_gravity="bottom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="3dp">
+        <View
+            android:layout_width="85dp"
+            android:layout_height="1dp"/>
+        <View
+            android:background="#CCCCCCCC"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+      <LinearLayout
+          android:gravity="top|right"
+          android:id="@+id/left"
+          android:layout_width="77dp"
+          android:layout_height="wrap_content">
+          <TextView
+              android:gravity="center"
+              android:id="@+id/camp"
+              android:visibility="gone"
+              android:textColor="@android:color/holo_orange_light"
+              android:paddingLeft="10dp"
+              android:text="促销"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"/>
+
+      </LinearLayout>
+        <LinearLayout
+            android:id="@+id/payAbstract"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <View
+        android:background="#CCCCCCCC"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+
+
+
+
+
+</LinearLayout>

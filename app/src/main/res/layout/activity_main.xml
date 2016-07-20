@@ -1,59 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/myscrollview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent">
+    <include layout="@layout/top_navigation"/>
+    <include layout="@layout/top_nav"/>
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/myscrollview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context="com.example.zhongcheng.demo01.MainActivity">
-
-        <include layout="@layout/top_navigation"/>
-
-        <android.support.v4.view.ViewPager
+        <LinearLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/pager"
+            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
-            android:layout_height="150dp">
-        </android.support.v4.view.ViewPager>
-
-        <include layout="@layout/table_view_item"/>
-
-
-        <include layout="@layout/div_blank"/>
-
-        <include layout="@layout/div_grey"/>
-
-        <include layout="@layout/div_blank"/>
-
-        <include layout="@layout/scroll_view_01"/>
-
-        <include layout="@layout/div_blank"/>
-
-        <include layout="@layout/div_grey"/>
-
-        <!--<include layout="@layout/mid_navigation"/>-->
-
-        <com.example.zhongcheng.demo01.ListViewModel.MyListView
-            android:id="@+id/list_view_main"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <!--<com.example.zhongcheng.demo01.MyLinearLayout-->
-            <!--android:id="@+id/mylinearlayout"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content">-->
-
-        <!--</com.example.zhongcheng.demo01.MyLinearLayout>-->
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context="com.example.zhongcheng.demo01.MainActivity">
 
 
-    </LinearLayout>
+
+            <android.support.v4.view.ViewPager
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/pager"
+                android:layout_width="match_parent"
+                android:layout_height="150dp">
+            </android.support.v4.view.ViewPager>
+
+            <include layout="@layout/table_view_item"/>
 
 
+            <include layout="@layout/div_blank"/>
+
+            <include layout="@layout/div_grey"/>
+
+            <include layout="@layout/div_blank"/>
+
+            <include layout="@layout/scroll_view_01"/>
+
+            <include layout="@layout/div_blank"/>
+
+            <include layout="@layout/div_grey"/>
+
+            <include layout="@layout/mid_navigation"/>
+
+            <com.example.zhongcheng.demo01.ListViewModel.MyListView
+                android:paddingTop="5dp"
+                android:id="@+id/list_view_main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
 </LinearLayout>
 

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/grey_div"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+    <View
+        android:background="#BFBFBF"
+        android:layout_height="2dp"
+        android:layout_width="match_parent"/>
+    <View
+        android:background="#DCDCDC"
+        android:layout_height="5dp"
+        android:layout_width="match_parent"/>
+    <View
+        android:background="#BFBFBF"
+        android:layout_height="2dp"
+        android:layout_width="match_parent"/>
+
+</LinearLayout>

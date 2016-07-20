@@ -1,20 +1,17 @@
 package com.example.zhongcheng.demo01;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ScrollView;
-import android.widget.TextView;
 
 import com.example.zhongcheng.demo01.Adapter.adapter.ScreenSlidePagerAdapter;
 import com.example.zhongcheng.demo01.ListViewModel.MyListView;
@@ -26,7 +23,6 @@ import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -55,28 +51,22 @@ public class MainActivity extends FragmentActivity {
 
                     break;
                 case VIEWPAGERCHANGE:
-                    if(viewPagerData!=null){
+                    if (viewPagerData != null) {
                         int current = mPager.getCurrentItem();
-                        mPager.setCurrentItem((current+1)%slideFragementurl.size());
+                        mPager.setCurrentItem((current + 1) % slideFragementurl.size());
 
                     }
                     break;
                 case LISTVIEWDATA:
-                    myListViewAdapter = new MyListViewAdapter(MainActivity.this,R.layout.list_view_item,listViewData);
+                    myListViewAdapter = new MyListViewAdapter(MainActivity.this, R.layout.list_view_item, listViewData);
                     listView.setAdapter(myListViewAdapter);
-                    Log.e("setAdapeter",myListViewAdapter.toString());
-                    Utility.setListViewHeightBasedOnChildren1(listView);
-
-
-
+//                    Utility.setListViewHeightBasedOnChildren1(listView);
 
 
                     break;
 
 
-
-                    //TODO
-
+                //TODO
 
 
             }
@@ -85,7 +75,10 @@ public class MainActivity extends FragmentActivity {
 
 
     private Gson gson = null;
-
+    private ScrollView scrollView;
+    private LinearLayout midNav;
+    private LinearLayout topNav;
+    private LinearLayout greyDiv;
 
 
     private ViewPager mPager = null;
@@ -103,11 +96,6 @@ public class MainActivity extends FragmentActivity {
     private ImageView table_item_view_image8 = null;
 
     private MyListView listView = null;
-
-
-
-
-
 
     private OkHttpClient client = null;
     Callback viewPagercallback = new Callback() {
@@ -130,6 +118,7 @@ public class MainActivity extends FragmentActivity {
         }
     };
     private Callback listViewCallBack = new Callback() {
+            //dd
         @Override
         public void onFailure(Call call, IOException e) {
 
@@ -137,7 +126,7 @@ public class MainActivity extends FragmentActivity {
 
         @Override
         public void onResponse(Call call, Response response) throws IOException {
-            listViewData = gson.fromJson(response.body().string(),ListViewData.class);
+            listViewData = gson.fromJson(response.body().string(), ListViewData.class);
 
             handler.sendEmptyMessage(LISTVIEWDATA);
 
@@ -151,6 +140,7 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ListView l = new ListView(this);
 
         init();
 
@@ -164,17 +154,17 @@ public class MainActivity extends FragmentActivity {
     protected void onResume() {
         super.onResume();
         reFreshViewPager();
-
+        scrollView.scrollTo(0, 0);
 
 
     }
 
     private void reFreshViewPager() {
-        new Thread(){
+        new Thread() {
             @Override
             public void run() {
                 try {
-                    while(true){
+                    while (true) {
                         sleep(2000);
                         handler.sendEmptyMessage(VIEWPAGERCHANGE);
                     }
@@ -191,14 +181,13 @@ public class MainActivity extends FragmentActivity {
     private void loadData() {
         gson = new Gson();
         String viewPagerUrl = "http://api.meituan.com/advert/v3/adverts?cityid=1&category=1&version=7.0.1&new=0&app=group&clienttp=android&devid=000000000000000&uid=&movieid=&partner=0&apptype=0&smId=&__vhost=api.mobile.meituan.com&utm_source=baidumobile&utm_medium=android&utm_term=401&version_name=7.0.1&utm_content=000000000000000&utm_campaign=AgroupBgroupC576591972453269000_a246307_c1E0Ghomepage_category1_1__a1__gfood&ci=1&msid=0000000000000001468846313953&uuid=2C2C0ECD557F366849954BEF88D0017A50438D0ED090872E11700645B17CCB50&userid=-1&__reqTraceID=eb982f51-aa80-41d8-9a41-9580b04c3010&__skck=6a375bce8c66a0dc293860dfa83833ef&__skts=1468849475314&__skua=a8f3d512c6de28d1b1cf638d4c1dbb33&__skno=dc4944df-71c6-41ba-ae9b-06ecae4cf1b8&__skcy=oBPcF4WW9JP75JSKLXNRT0%2By8hM%3D";
-        String listViewUrl = "http://api.meituan.com/meishi/filter/v4/deal/select/city/1/cate/1?sort=defaults&ci=1&hasGroup=true&mpt_cate1=-1&mpt_cate2=1&wifi-name=WiredSSID%08&wifi-mac=01%3A80%3Ac2%3A00%3A00%3A03%08&wifi-strength=-55%08&wifi-cur=0&offset=0&limit=25&poiFields=cityId%2Clng%2CfrontImg%2CavgPrice%2CavgScore%2Cname%2Clat%2CcateName%2CareaName%2CcampaignTag%2Cabstracts%2Crecommendation%2CpayInfo%2CpayAbstracts%2CqueueStatus%2CgroupInfo%2CiUrl%2CcharacteristicArea&client=android&__vhost=api.meishi.meituan.com&utm_source=baidumobile&utm_medium=android&utm_term=401&version_name=7.0.1&utm_content=000000000000000&utm_campaign=AgroupBgroupC576591972453269000_a246307_c1E0Ghomepage_category1_1__a1__gfood&msid=0000000000000001468863838414&uuid=2C2C0ECD557F366849954BEF88D0017A50438D0ED090872E11700645B17CCB50&userid=-1&__reqTraceID=79ea795a-a79b-4171-a591-6d985ff1efa9&__skck=6a375bce8c66a0dc293860dfa83833ef&__skts=1468865455068&__skua=a8f3d512c6de28d1b1cf638d4c1dbb33&__skno=114f6b8a-b306-42e0-8415-fe5527677285&__skcy=1y1qDMKDn2T8ENyJBRxA0AZIN0w%3D";
+        String listViewUrl = "http://api.meituan.com/meishi/filter/v4/deal/select/city/1/cate/1?sort=defaults&ci=1&hasGroup=true&mpt_cate1=-1&mpt_cate2=1&wifi-name=WiredSSID%08&wifi-mac=01%3A80%3Ac2%3A00%3A00%3A03%08&wifi-strength=-55%08&wifi-cur=0&offset=0&limit=25&poiFields=cityId%2Clng%2CfrontImg%2CavgPrice%2CavgScore%2Cname%2Clat%2CcateName%2CareaName%2CcampaignTag%2Cabstracts%2Crecommendation%2CpayInfo%2CpayAbstracts%2CqueueStatus%2CgroupInfo%2CiUrl%2CcharacteristicArea&client=android&__vhost=api.meishi.meituan.com&utm_source=baidumobile&utm_medium=android&utm_term=401&version_name=7.0.1&utm_content=000000000000000&utm_campaign=AgroupBgroupC576591972453269000_a246307_c1E7494123390684811264_a366272_c0_e11687638804464110918Ghomepage_category1_1__a1__gfood&msid=0000000000000001468899543848&uuid=2C2C0ECD557F366849954BEF88D0017A50438D0ED090872E11700645B17CCB50&userid=-1&__reqTraceID=710b609c-da5d-4978-8708-d3a8d139c448&__skck=6a375bce8c66a0dc293860dfa83833ef&__skts=1468900577341&__skua=a8f3d512c6de28d1b1cf638d4c1dbb33&__skno=bd2c7629-bc5b-41ab-89f4-a640fe0f4e08&__skcy=v1EUgVvWRBrngAVAL0G%2FFiEDyBk%3D";
 
         Request viewPagerReq = new Request.Builder().url(viewPagerUrl).build();
         Request listViewReq = new Request.Builder().url(listViewUrl).build();
 
         Call viewPagercall = client.newCall(viewPagerReq);
         Call listViewCall = client.newCall(listViewReq);
-
 
 
         viewPagercall.enqueue(viewPagercallback);
@@ -219,14 +208,15 @@ public class MainActivity extends FragmentActivity {
         Picasso.with(MainActivity.this).load("http://p0.meituan.net/meishiop/e4c317e7b05fae1190ba3cd897d1b9256211.png").into(table_item_view_image8);
 
 
-
-
-
     }
 
     private void initView() {
 
         mPager = (ViewPager) findViewById(R.id.pager);
+        scrollView = (ScrollView) findViewById(R.id.myscrollview);
+        midNav = (LinearLayout) findViewById(R.id.mid_navi);
+        topNav = (LinearLayout) findViewById(R.id.top_navi);
+        greyDiv = (LinearLayout) findViewById(R.id.grey_div);
 
 
         scrollView_imageView01 = (ImageView) findViewById(R.id.scrollview_image01);
@@ -245,7 +235,29 @@ public class MainActivity extends FragmentActivity {
 
         listView = (MyListView) findViewById(R.id.list_view_main);
 
-
+//        scrollView.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                int location[] = new int[2];
+//
+//                listView.getLocationOnScreen(location);
+//                Log.e("dd",""+location[1]);
+//
+//                if(location[1]<90){
+//                    midNav.setVisibility(View.GONE);
+//                    topNav.setVisibility(View.VISIBLE);
+//                }else{
+//                    midNav.setVisibility(View.VISIBLE);
+//                    topNav.setVisibility(View.GONE);
+//
+//                }
+//
+//
+//
+//
+//                return false;
+//            }
+//        });
 
 
 
@@ -255,6 +267,9 @@ public class MainActivity extends FragmentActivity {
     private void init() {
         client = new OkHttpClient();
     }
+
+
+
 
 
 }
